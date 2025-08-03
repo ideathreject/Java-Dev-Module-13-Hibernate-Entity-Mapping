@@ -34,6 +34,6 @@ public class Ticket {
     @JoinColumn(name = "to_planet_id", nullable = false)
     private Planet toPlanet;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", nullable = false, insertable = false, updatable = false)
     private LocalDateTime createdAt;
 }

@@ -10,7 +10,7 @@ CREATE TABLE client (
 
 CREATE TABLE ticket (
     id IDENTITY PRIMARY KEY,
-    created_at TIMESTAMP NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     client_id BIGINT NOT NULL,
     from_planet_id VARCHAR NOT NULL,
     to_planet_id VARCHAR NOT NULL,

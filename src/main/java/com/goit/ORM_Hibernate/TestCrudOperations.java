@@ -2,42 +2,35 @@ package com.goit.ORM_Hibernate;
 
 import com.goit.ORM_Hibernate.crudServices.ClientCrudService;
 import com.goit.ORM_Hibernate.crudServices.PlanetCrudService;
+import com.goit.ORM_Hibernate.crudServices.TicketCrudService;
 import com.goit.ORM_Hibernate.entity.Client;
 import com.goit.ORM_Hibernate.entity.Planet;
+import com.goit.ORM_Hibernate.entity.Ticket;
+
+import java.util.List;
 
 
 public class TestCrudOperations {
     public static void main(String[] args) {
-        ClientCrudService clientService = new ClientCrudService();
-        PlanetCrudService planetService = new PlanetCrudService();
-        //User
-        //Create
-        Client newClient = new Client();
-        newClient.setName("Simon Bratz");
-        clientService.create(newClient);
-        //Read
-        Client readClient = clientService.read(4L);
-        System.out.println("Client with id 4 " + readClient);
-        //Update
-        newClient.setName("Simon Rodriges");
-        clientService.update(newClient);
-        //Delete
-        clientService.delete(14L);
 
-        //Planet
+        TicketCrudService ticketService = new TicketCrudService();
+
         //Create
-        Planet newPlanet = new Planet();
-        newPlanet.setId("PLNT");
-        newPlanet.setName("PLANET");
-        planetService.create(newPlanet);
-        //Read
-        Planet readPlanet = planetService.read("SAT");
-        System.out.println(readPlanet);
-        //Update
-        newPlanet.setName("Updated Planet");
-        planetService.update(newPlanet);
+        Ticket newTicket = new Ticket();
+        newTicket.setClient(new Client(1L, null, null));
+        newTicket.setFromPlanet(new Planet("EARTH", null));
+        newTicket.setToPlanet(new Planet("MARS", null));
+
+
         //Delete
-        planetService.delete("PLNT");
+        ticketService.delete(4L);
+
+        //Read
+        List<Ticket> allTickets = ticketService.readAll();
+        System.out.println("All tickets:");
+        allTickets.forEach(System.out::println);
+
+
 
     }
 }
