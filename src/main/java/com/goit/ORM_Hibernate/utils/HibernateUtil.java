@@ -2,6 +2,7 @@ package com.goit.ORM_Hibernate.utils;
 
 import com.goit.ORM_Hibernate.entity.Client;
 import com.goit.ORM_Hibernate.entity.Planet;
+import com.goit.ORM_Hibernate.entity.Ticket;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -14,6 +15,7 @@ public class HibernateUtil {
         sessionFactory = new Configuration()
                 .addAnnotatedClass(Client.class)
                 .addAnnotatedClass(Planet.class)
+                .addAnnotatedClass(Ticket.class)
                 .buildSessionFactory();
     }
 
